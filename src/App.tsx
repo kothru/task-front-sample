@@ -10,6 +10,11 @@ type TaskType = {
   actual: number
 }
 
+type Props = {
+  task: TaskType
+  children: React.ReactNode
+};
+
 const GET_TASKS = gql`
   query GetTasks {
     tasks {
@@ -21,23 +26,24 @@ const GET_TASKS = gql`
   }
 `;
 
+const Row: React.FC<Props> = (props) => {
+  const task = props.task
+  return (
+    <>
+      <td>{task.id}</td>
+      <td>{task.name}</td>
+      <td>{task.plan}</td>
+      <td>{task.actual}</td>
+    </>
+  );
+};
+
 function TaskTable() {
-  const { loading, error, data } = useQuery<TaskType[]>(GET_TASKS);
+  const { loading, error, data } = useQuery(GET_TASKS);
 
   if (loading) return <p>Loading...</p>;
   if (error) return <p>Error</p>;
   if (data === undefined) return <p>No Data</p>;
-
-  const listItems = () => {
-    return data.map((task) =>
-      <tr key={task.id}>
-        <td>{task.id}</td>
-        <td>{task.name}</td>
-        <td>{task.plan}</td>
-        <td>{task.actual}</td>
-      </tr>
-    );
-  }
 
   return (
     <div className="overflow-x-auto">
@@ -51,10 +57,14 @@ function TaskTable() {
           </tr>
         </thead>
         <tbody>
-          {listItems}
+          {
+            data.tasks.map((task: TaskType) => {
+              return <tr key={task.id}><Row task={task}>children</Row></tr>
+            })
+          }
         </tbody>
       </table>
-    </div>
+    </div >
   );
 }
 

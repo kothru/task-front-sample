@@ -20,18 +20,6 @@ run server(kothru/task-server-sample)
 npm i
 ```
 
-* Make `.env` file,
-
-```
-touch .env
-```
-
-and write graphql server URL like this
-
-```
-GRAPHQL_SERVER_URL="http://localhost:4000/graphql"
-```
-
 ### Executing program
 
 ```
@@ -40,4 +28,4 @@ npm run dev
 
 open some browser
 
-http://localhost:4000/graphql
+http://localhost:3000/
