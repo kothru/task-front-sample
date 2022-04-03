@@ -12,7 +12,6 @@ type TaskType = {
 
 type Props = {
   task: TaskType
-  children: React.ReactNode
 };
 
 const GET_TASKS = gql`
@@ -26,7 +25,7 @@ const GET_TASKS = gql`
   }
 `;
 
-const Row: React.FC<Props> = (props) => {
+const Row: React.VFC<Props> = (props) => {
   const task = props.task
   return (
     <>
@@ -59,7 +58,7 @@ function TaskTable() {
         <tbody>
           {
             data.tasks.map((task: TaskType) => {
-              return <tr key={task.id}><Row task={task}>children</Row></tr>
+              return <tr key={task.id}><Row task={task} /></tr>
             })
           }
         </tbody>
