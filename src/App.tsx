@@ -1,7 +1,7 @@
 import { TaskTable } from './TaskTable'
 import { ModalForm } from './ModalForm'
 
-function App() {
+export function App() {
   return (
     <div>
       <h2>Task Table</h2>
@@ -10,5 +10,3 @@ function App() {
     </div>
   )
 }
-
-export default App
