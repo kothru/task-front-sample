@@ -1,17 +1,8 @@
-import {
-  useQuery,
-  gql
-} from "@apollo/client";
-
-type TaskType = {
-  id: number
-  name: string
-  plan: number
-  actual: number
-}
+import { useQuery, gql } from "@apollo/client";
+import { Task } from './type';
 
 type Props = {
-  task: TaskType
+  task: Task
 };
 
 const GET_TASKS = gql`
@@ -57,7 +48,7 @@ function TaskTable() {
         </thead>
         <tbody>
           {
-            data.tasks.map((task: TaskType) => {
+            data.tasks.map((task: Task) => {
               return <tr key={task.id}><Row task={task} /></tr>
             })
           }
