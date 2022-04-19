@@ -18,7 +18,7 @@ export const Dialog: React.VFC<DialogProps> = (props) => {
       { id: formData.id, actual: parseInt(formData.actual.toString()) }
     ]
     updateActual({ variables: { tasks: inputValues } })
-    props.toggledialogOpen()
+    props.toggleDialogOpen()
   }
   return (
     <dialog id="actualInputDialog" className="overflow-y-auto overflow-x-hidden fixed inset-0 z-50 bg-neutral" open={props.dialogOpen}>
