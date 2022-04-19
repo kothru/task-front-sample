@@ -10,3 +10,14 @@ export const GET_TASKS = gql`
     }
   }
 `;
+
+export const UPDATE_ACTUAL = gql`
+  mutation UpdateActual($tasks: [TaskInputType!]!) {
+    updateActual(tasks: $tasks) {
+      id
+      name
+      plan
+      actual
+    }
+  }
+`;

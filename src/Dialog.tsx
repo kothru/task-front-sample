@@ -1,16 +1,25 @@
+import { useMutation } from "@apollo/client";
 import { useForm } from "react-hook-form";
+import { UPDATE_ACTUAL } from "./query";
 import { DialogProps, Task } from './type';
 
 type FormProps = Pick<Task, 'id' | 'actual'>;
 
 export const Dialog: React.VFC<DialogProps> = (props) => {
+  const [updateActual] = useMutation(UPDATE_ACTUAL);
   const { register, handleSubmit } = useForm<FormProps>({
     defaultValues: {
       id: 1,
       actual: 100,
     }
   });
-  const onSubmit = (data: FormProps) => console.log(data);
+  const onSubmit = (formData: FormProps) => {
+    const inputValues = [
+      { id: formData.id, actual: parseInt(formData.actual.toString()) }
+    ]
+    updateActual({ variables: { tasks: inputValues } })
+    props.toggledialogOpen()
+  }
   return (
     <dialog id="actualInputDialog" className="overflow-y-auto overflow-x-hidden fixed inset-0 z-50 bg-neutral" open={props.dialogOpen}>
       <form method="dialog" onSubmit={handleSubmit(onSubmit)}>
