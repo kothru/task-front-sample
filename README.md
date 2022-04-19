@@ -4,7 +4,7 @@ Simple Task Front Sample
 
 ## Description
 
-Composed by Vite(React + TS) + daisyUI
+Vite(React + TS) + Tailwind CSS(daisyUI) + React Hook Form
 
 ## Prerequisites
 
