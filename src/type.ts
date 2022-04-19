@@ -44,11 +44,17 @@ export type TaskInputType = {
 export type DialogProps = {
   dialogOpen: boolean,
   toggleDialogOpen: () => void
+  dialogOpenTask?: Task
 };
 
-export type DialogOpenButtonProps = Pick<DialogProps, 'toggleDialogOpen'>;
-export type TaskTableProps = Pick<DialogProps, 'toggleDialogOpen'>;
+
+export type TaskTableProps = {
+  toggleDialogOpen: () => void
+  setDialogOpenTask: (task: Task) => void
+};
 export type TableRowProps = {
   task: Task
   toggleDialogOpen: () => void
+  setDialogOpenTask: (task: Task) => void
 }
+export type DialogOpenButtonProps = TableRowProps

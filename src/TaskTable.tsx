@@ -11,7 +11,7 @@ const Row: React.VFC<TableRowProps> = (props) => {
       <td>{task.name}</td>
       <td>{task.plan}</td>
       <td>{task.actual}</td>
-      <td><DialogOpenButton toggleDialogOpen={props.toggleDialogOpen} /></td>
+      <td><DialogOpenButton {...props} /></td>
     </>
   );
 };
@@ -40,7 +40,7 @@ export const TaskTable: React.VFC<TaskTableProps> = (props) => {
             data.tasks.map((task: Task) => {
               return (
                 <tr key={task.id}>
-                  <Row task={task} toggleDialogOpen={props.toggleDialogOpen} />
+                  <Row task={task} {...props} />
                 </tr>
               )
             })

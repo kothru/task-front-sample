@@ -2,7 +2,8 @@ import { DialogOpenButtonProps } from "./type";
 
 export const DialogOpenButton: React.VFC<DialogOpenButtonProps> = (props) => {
   const onClick = () => {
-    props?.toggleDialogOpen()
+    props.setDialogOpenTask(props.task)
+    props.toggleDialogOpen()
   }
   return (
     <menu>
