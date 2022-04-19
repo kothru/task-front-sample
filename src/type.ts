@@ -40,3 +40,10 @@ export type TaskInputType = {
   actual: Scalars['Int'];
   id: Scalars['Int'];
 };
+
+export type DialogProps = {
+  dialogOpen: boolean,
+  toggledialogOpen: () => void
+};
+
+export type DialogOpenButtonProps = Pick<DialogProps, 'toggledialogOpen'>;
