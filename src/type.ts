@@ -47,3 +47,8 @@ export type DialogProps = {
 };
 
 export type DialogOpenButtonProps = Pick<DialogProps, 'toggledialogOpen'>;
+export type TaskTableProps = Pick<DialogProps, 'toggledialogOpen'>;
+export type TableRowProps = {
+  task: Task
+  toggledialogOpen: () => void
+}

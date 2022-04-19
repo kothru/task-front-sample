@@ -9,9 +9,8 @@ export function App() {
   return (
     <div>
       <h2>Task Table</h2>
-      <TaskTable />
+      <TaskTable toggledialogOpen={toggledialogOpen} />
       <Dialog dialogOpen={dialogOpen} toggledialogOpen={toggledialogOpen} />
-      <DialogOpenButton toggledialogOpen={toggledialogOpen} />
     </div>
   )
 }

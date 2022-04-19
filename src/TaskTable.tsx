@@ -1,12 +1,9 @@
 import { useQuery } from "@apollo/client";
-import { Task } from './type';
+import { TableRowProps, Task, TaskTableProps } from './type';
 import { GET_TASKS } from './query'
+import { DialogOpenButton } from "./DialogOpenButton";
 
-type Props = {
-  task: Task
-};
-
-const Row: React.VFC<Props> = (props) => {
+const Row: React.VFC<TableRowProps> = (props) => {
   const task = props.task
   return (
     <>
@@ -14,11 +11,12 @@ const Row: React.VFC<Props> = (props) => {
       <td>{task.name}</td>
       <td>{task.plan}</td>
       <td>{task.actual}</td>
+      <td><DialogOpenButton toggledialogOpen={props.toggledialogOpen} /></td>
     </>
   );
 };
 
-export function TaskTable() {
+export const TaskTable: React.VFC<TaskTableProps> = (props) => {
   const { loading, error, data } = useQuery(GET_TASKS);
 
   if (loading) return <p>Loading...</p>;
@@ -34,12 +32,17 @@ export function TaskTable() {
             <th>Name</th>
             <th>Plan</th>
             <th>Actual</th>
+            <th>Edit</th>
           </tr>
         </thead>
         <tbody>
           {
             data.tasks.map((task: Task) => {
-              return <tr key={task.id}><Row task={task} /></tr>
+              return (
+                <tr key={task.id}>
+                  <Row task={task} toggledialogOpen={props.toggledialogOpen} />
+                </tr>
+              )
             })
           }
         </tbody>
